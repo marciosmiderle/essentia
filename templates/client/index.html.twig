@@ -3,64 +3,59 @@
 {% block app_title %} Lista de Clientes{% endblock %}
 
 {% block body %}
-  <!-- <div class="w3-responsive"> -->
-    <table class="w3-table-all">
-      <thead>
-        <tr>
-          <!-- <th>Id</th> -->
-          <th>nome</th>
-          <th>email</th>
-          <th>telefone</th>
-          <th>ações</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for client in clients %}
-          <tr>
-            <!-- <td>{{ client.id }}</td> -->
-            <td>
-              <!-- <div style="width:2em;">
-                   <img style="height:1.5em;"
-                   src="{{ client.photoThumbnailUrl }}"/>
-                   </div>{{ client.name }} -->
-              <div class="w3-bar">
-                <div class="w3-bar-item w3-center" style="padding:0; widt:5em;">
-                  <img class="w3-circle w3-right" style="padding:0; height:2.5em;"
-                       src="{{ client.photoThumbnailUrl }}"/>
-                </div>
-                <div class="w3-bar-item">
-                  {{ client.name }}
-                </div>
-              </div>
-            </td>
-            <td>{{ client.email }}</td>
-            <td>{{ client.phone | phone_number_format('NATIONAL') }}</td>
-            <td>
-              <div class="w3-bar w3-small">
-                <a href="{{ path('client_show', {'id': client.id}) }}"
-                   style="text-decoration: none;">
-                  <button class="w3-button w3-padding-small w3-green">
-                    mostrar
-                  </button>
-                </a>
-                <a href="{{ path('client_edit', {'id': client.id}) }}"
-                   style="text-decoration: none;">
-                  <button class="w3-button w3-padding-small w3-blue">
-                    editar
-                  </button>
-                </a>
-                {{ include('client/_delete_form.html.twig') }}
-              </div>
-            </td>
-          </tr>
+
+  <div class="w3-container">
+
+    <div class="w3-row w3-margin-bottom w3-large">
+      <div class="w3-col    m4 w3-green w3-left-align">nome</div>
+      <div class="w3-col s6 m2 w3-red   w3-left-align">email</div>
+      <div class="w3-col s6 m2 w3-blue  w3-left-align">telefone</div>
+      <div class="w3-col    m4 w3-dark-grey w3-center">ações</div>
+    </div>
+
+    {% for client in clients %}
+      <div class="w3-row w3-margin-bottom w3-border-left w3-border-bottom">
+        <div class="w3-col    m4">
+          <div class="w3-bar">
+            <div class="w3-bar-item w3-center" style="padding:0; widt:5em;">
+              <a href="{{ path('client_show', {'id': client.id}) }}"
+                 style="text-decoration: none;">
+                <img class="w3-circle w3-right" style="padding:0; height:2.5em;"
+                     src="{{ client.photoThumbnailUrl }}"/>
+              </a>
+            </div>
+            <div class="w3-bar-item">
+              {{ client.name }}
+            </div>
+          </div>
+        </div>
+        <div class="w3-col s6 m2">{{ client.email }}</div>
+        <div class="w3-col s6 m2">{{ client.phone | phone_number_format('NATIONAL') }}</div>
+        <div class="w3-col    m4 w3-center">
+          <div class="w3-bar w3-small">
+            <a href="{{ path('client_show', {'id': client.id}) }}"
+               style="text-decoration: none;">
+              <button class="w3-button w3-padding-small w3-green">
+                mostrar
+              </button>
+            </a>
+            <a href="{{ path('client_edit', {'id': client.id}) }}"
+               style="text-decoration: none;">
+              <button class="w3-button w3-padding-small w3-blue">
+                editar
+              </button>
+            </a>
+            {{ include('client/_delete_form.html.twig') }}
+          </div>
+        </div>
+      </div>
 {% else %}
-          <tr>
-            <td colspan="6">no records found</td>
-          </tr>
-        {% endfor %}
-      </tbody>
-    </table>
-<!--  </div> -->
+      <div class="w3-row">
+        <div class="w3-col">nenhum cliente cadastrado</div>
+      </div>
+    {% endfor %}
+
+  </div>
   <div class="w3-container w3-padding">
     <a href="{{ path('client_new') }}">
       <button class="w3-button w3-padding-small w3-teal w3-large w3-card-4">
