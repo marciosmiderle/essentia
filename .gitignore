@@ -17,3 +17,4 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 .ac-php-conf.json
+public/images/cache/
