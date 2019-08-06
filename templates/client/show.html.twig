@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block app_title %} Cliente{% endblock %}
+
+{% block body %}
+  <div class="w3-responsive">
+    <table class="w3-table-all">
+      <tbody>
+        <tr>
+          <!-- <th>Id</th>
+               <td>{{ client.id }}</td> -->
+        </tr>
+        <tr>
+          <th>nome</th>
+          <td>{{ client.name }}</td>
+        </tr>
+        <tr>
+          <th>email</th>
+          <td>{{ client.email }}</td>
+        </tr>
+        <tr>
+          <th>telefone</th>
+          <td>{{ client.phone | phone_number_format('NATIONAL') }}</td>
+        </tr>
+        <tr>
+          <th>foto</th>
+          <td><img class="w3-border w3-padding w3-image w3-padding"
+                   src="{{ client.photoUrl }}"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <a href="{{ path('client_index') }}">
+    voltar para a lista
+  </a>
+
+{% endblock %}

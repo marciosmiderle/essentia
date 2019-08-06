@@ -1,0 +1,10 @@
+{{ form_start(form, {'attr': {'class': 'w3-container'}}) }}
+  {{ form_widget(form) }}
+  <div class="w3-container w3-padding">
+    <div class="w3-bar">
+      <button class="w3-button w3-padding-small w3-teal w3-large w3-card-4">
+        {{ button_label|default('salvar') }}
+      </button>
+    </div>
+  </div>
+{{ form_end(form) }}
